@@ -118,7 +118,6 @@ val_loader = DataLoader(val_dataset,
                         pin_memory = False,
                         num_workers=7)
 
-# model = Model.AnomalyDetectionAE(len(df_concat.columns)).to(device)
 model = model.T5_BoolQ.from_pretrained(model_name, **model_config)
 model = model.to(device)
 
@@ -136,7 +135,7 @@ model_PATH = 'save_model/'
 def train(model, train_loader, val_loader, optimizer, args):
 # def train(model, train_loader, criterion, optimizer, args):
     best_val_acc = 0
-    ''' AutoEncoder for Anomaly Detection  '''
+    ''' KET5 - BoolQ  '''
     print("Start training...\n")
     print(f"{'Elapsed':^9} | {'Epoch':^7} | {'Step':^7} | {'Train loss':^12} | {'Train acc':^12} | {'Val loss':^10} | {'Val Acc':^9} ")
     print("-"*85)
